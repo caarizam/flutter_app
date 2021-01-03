@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/answer_view.dart';
+import 'package:flutter_app/views/question_view.dart';
+import 'package:flutter_app/views/register_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -6,19 +9,20 @@ class MyApp extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState(){
-    return MyAppState();
+    return _MyAppState();
   }
 
 }
 
-class MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
 
-  var clicks = 0;
+  var _clicks = 0;
 
-  void clicksIncrement(){
+  void _clicksIncrement(){
     setState(() {
-      clicks++;
+      _clicks++;
     });
+    print(_clicks);
   }
 
   @override
@@ -27,13 +31,33 @@ class MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Home"),
+
         ),
-        body: Column(children: [
-          Text("Clicks " + clicks.toString(),),
+        body: Column(children: <Widget>[
+          TextFormField(
+            decoration: const InputDecoration(
+              hintText: "Enter a value",
+            ),
+          ),
+          Answer(
+              _clicksIncrement
+          ),
+          Question(
+            "This is a question:",
+          ),
           RaisedButton(
-            child: Text("Answer1", style: TextStyle(fontSize: 20),),
-            onPressed: () => clicksIncrement(),
-          )
+            child: Text("Register", style: TextStyle(fontSize: 20),),
+            color: Colors.blue,
+            textColor: Colors.white,
+            onPressed: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) {
+                    return RegisterView();
+                  })
+              );
+            },
+          ),
         ],),
       ),
     );
