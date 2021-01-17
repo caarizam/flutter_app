@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/views/answer_view.dart';
 import 'package:flutter_app/views/question_view.dart';
 import 'package:flutter_app/views/register_view.dart';
+import 'package:flutter_app/views/login_view.dart';
 import 'package:flutter_app/views/welcome_view.dart';
 import 'package:flutter_driver/driver_extension.dart';
-//void main() => runApp(MyApp());
 
 Future<void> main() async{
   //enableFlutterDriverExtension();
@@ -38,8 +38,9 @@ class _MyAppState extends State<MyApp> {
       title: "Home",
       initialRoute: '/',
       routes: {
-        '/': (context) => WelcomeView(),
-        '/register': (context) => RegisterView(),
+        '/': (context) => LoginView(),
+        RegisterView.routeName: (context) => RegisterView(),
+        WelcomeView.routeName: (context) => WelcomeView()
       },
     );
   }
