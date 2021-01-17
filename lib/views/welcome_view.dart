@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RegisterView extends StatelessWidget {
-  static String route = '/register';
-
+class WelcomeView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +8,7 @@ class RegisterView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text('REGISTER'),
+        title: Text('WELCOME'),
       ),
       body: Column(
         children: <Widget>[
@@ -19,14 +17,9 @@ class RegisterView extends StatelessWidget {
             height: 4,
           ),
           Text(
-            'Please, enter the information',
-            style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.bold, color: Colors.teal),
+            'Login',
+            style: TextStyle(fontSize: 33, fontWeight: FontWeight.bold, color: Colors.teal),
             textAlign: TextAlign.center,
-          ),
-          SizedBox(
-            width: 4,
-            height: 4,
           ),
           SizedBox(
             width: 4,
@@ -49,53 +42,53 @@ class RegisterView extends StatelessWidget {
           ),
           TextField(
             key: Key('password'),
-            controller: TextEditingController(),
-            textInputAction: TextInputAction.done,
-            maxLength: 60,
+            maxLength: 10,
             obscureText: true,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'password',
             ),
           ),
-          SizedBox(
-            width: 4,
-            height: 4,
-          ),
-          TextField(
-            key: Key('confirm_pass'),
-            controller: TextEditingController(),
-            textInputAction: TextInputAction.done,
-            maxLength: 60,
-            obscureText: true,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'confirm password',
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(
+              horizontal: 8,
+              vertical: 3,
             ),
-          ),
-          ButtonTheme(
-            //width: double.infinity,
-            //margin: EdgeInsets.all(8),
-            minWidth: MediaQuery.of(context).size.width,
             child: RaisedButton(
-              key: Key('register_action'),
-              padding: EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
+              key: Key('login_button'),
+
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(6),
                 side: BorderSide(color: Colors.transparent),
               ),
               elevation: 0,
-              child: Text(
-                'Send',
-                style: TextStyle(fontSize: 25),
-              ),
+              child: Text("Login", style: TextStyle(fontSize: 25),),
               color: Colors.black,
               textColor: Colors.white,
-              onPressed: () {
-                Navigator.pop(context);
+              onPressed: (){
+                print("Login action");
+              },
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(
+              horizontal: 8,
+              vertical: 3,
+            ),
+            child: RaisedButton(
+              key: Key('register_link'),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6),
+                side: BorderSide(color: Colors.transparent),
+              ),
+              elevation: 0,
+              child: Text('Register', style: TextStyle(fontSize: 25),),
+              color: Colors.black,
+              textColor: Colors.white,
+              onPressed: (){
+                Navigator.pushNamed(context, '/register');
               },
             ),
           ),
@@ -103,4 +96,5 @@ class RegisterView extends StatelessWidget {
       ),
     );
   }
+
 }

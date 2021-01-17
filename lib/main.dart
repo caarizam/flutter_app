@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/views/answer_view.dart';
 import 'package:flutter_app/views/question_view.dart';
 import 'package:flutter_app/views/register_view.dart';
+import 'package:flutter_app/views/welcome_view.dart';
+import 'package:flutter_driver/driver_extension.dart';
+//void main() => runApp(MyApp());
 
-void main() => runApp(MyApp());
+Future<void> main() async{
+  //enableFlutterDriverExtension();
+  runApp(
+    MyApp(),
+  );
+}
 
 class MyApp extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState(){
     return _MyAppState();
@@ -28,38 +35,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Home"),
-
-        ),
-        body: Column(children: <Widget>[
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: "Enter a value",
-            ),
-          ),
-          Answer(
-              _clicksIncrement
-          ),
-          Question(
-            "This is a question:",
-          ),
-          RaisedButton(
-            child: Text("Register", style: TextStyle(fontSize: 20),),
-            color: Colors.blue,
-            textColor: Colors.white,
-            onPressed: (){
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) {
-                    return RegisterView();
-                  })
-              );
-            },
-          ),
-        ],),
-      ),
+      title: "Home",
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WelcomeView(),
+        '/register': (context) => RegisterView(),
+      },
     );
   }
 }
