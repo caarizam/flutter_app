@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
-class LoginView extends StatelessWidget{
+class LoginView extends StatelessWidget {
+  final _passFocusNode = FocusNode();
+  final _form = GlobalKey<FormState>();
+
+  void _loginAction() {
+    //_form.currentState.save();
+
+  }
+
   @override
   Widget build(BuildContext context) {
+    var increments = 0;
     return Scaffold(
       backgroundColor: Color(0xfff5f5dc),
       appBar: AppBar(
@@ -10,91 +19,40 @@ class LoginView extends StatelessWidget{
         centerTitle: true,
         title: Text('LOGIN'),
       ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            width: 4,
-            height: 4,
-          ),
-          Text(
-            'Enter your credentials',
-            style: TextStyle(fontSize: 33, fontWeight: FontWeight.bold, color: Colors.teal),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(
-            width: 4,
-            height: 4,
-          ),
-          TextField(
-            key: Key('username'),
-            controller: TextEditingController(),
-            textInputAction: TextInputAction.done,
-            maxLength: 60,
-            obscureText: false,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'username',
-            ),
-          ),
-          SizedBox(
-            width: 4,
-            height: 4,
-          ),
-          TextField(
-            key: Key('password'),
-            maxLength: 10,
-            obscureText: true,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'password',
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(
-              horizontal: 8,
-              vertical: 3,
-            ),
-            child: RaisedButton(
-              key: Key('login_button'),
-
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-                side: BorderSide(color: Colors.transparent),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _form,
+          child: ListView(
+            children: <Widget>[
+              TextFormField(
+                key: Key('email'),
+                decoration: InputDecoration(labelText: 'email'),
+                textInputAction: TextInputAction.next,
+                maxLength: 60,
+                onFieldSubmitted: (_) {
+                  FocusScope.of(context).requestFocus(_passFocusNode);
+                },
               ),
-              elevation: 0,
-              child: Text("Login", style: TextStyle(fontSize: 25),),
-              color: Colors.black,
-              textColor: Colors.white,
-              onPressed: (){
-                Navigator.pushNamed(context, '/welcome');
-              },
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(
-              horizontal: 8,
-              vertical: 3,
-            ),
-            child: RaisedButton(
-              key: Key('register_link'),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-                side: BorderSide(color: Colors.transparent),
+              TextFormField(
+                key: Key('password'),
+                decoration: InputDecoration(labelText: 'password'),
+                textInputAction: TextInputAction.next,
+                obscureText: true,
+                maxLength: 20,
+                focusNode: _passFocusNode,
               ),
-              elevation: 0,
-              child: Text('Register', style: TextStyle(fontSize: 25),),
-              color: Colors.black,
-              textColor: Colors.white,
-              onPressed: (){
-                Navigator.pushNamed(context, '/register');
-              },
-            ),
+              RaisedButton(
+                key: Key('login_button'),
+                child: Text("Login", style: TextStyle(fontSize: 20),),
+                color: Colors.black,
+                textColor: Colors.white,
+                onPressed: () => print('hello'),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
-
 }
