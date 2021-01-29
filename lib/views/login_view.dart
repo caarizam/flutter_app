@@ -47,7 +47,18 @@ class LoginView extends StatelessWidget {
                 child: Text("Login", style: TextStyle(fontSize: 20),),
                 color: Colors.black,
                 textColor: Colors.white,
-                onPressed: () => print('hello'),
+                onPressed: (){
+                  //Navigator.pushNamed(context, '/register');
+                },
+              ),
+              RaisedButton(
+                child: Text("Register", style: TextStyle(fontSize: 20),),
+                color: Colors.black,
+                textColor: Colors.white,
+                onPressed: (){
+                  //Navigator.pushNamed(context, '/register');
+                  
+                },
               ),
             ],
           ),

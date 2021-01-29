@@ -3,6 +3,7 @@ import 'package:flutter_app/views/answer_view.dart';
 import 'package:flutter_app/views/question_view.dart';
 import 'package:flutter_app/views/register_view.dart';
 import 'package:flutter_app/views/login_view.dart';
+import 'package:flutter_app/views/static_info/static_register_view.dart';
 import 'package:flutter_app/views/welcome_view.dart';
 import 'package:flutter_driver/driver_extension.dart';
 
@@ -40,7 +41,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => LoginView(),
         RegisterView.routeName: (context) => RegisterView(),
-        WelcomeView.routeName: (context) => WelcomeView()
+        WelcomeView.routeName: (context) => WelcomeView(),
+        StaticRegisterView.routeName: (context) => StaticRegisterView(),
       },
     );
   }

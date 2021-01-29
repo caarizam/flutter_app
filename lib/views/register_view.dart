@@ -90,12 +90,13 @@ class RegisterView extends StatelessWidget {
               elevation: 0,
               child: Text(
                 'Send',
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 18),
               ),
               color: Colors.black,
               textColor: Colors.white,
               onPressed: () {
-                Navigator.pop(context);
+                //Navigator.pop(context);
+                Navigator.pushNamed(context, '/static-register');
               },
             ),
           ),
