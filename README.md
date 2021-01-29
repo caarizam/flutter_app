@@ -1,8 +1,14 @@
-# flutter_app
+# Basic flutter app
 
-flutter drive --target=test_driver/app.dart
+## install dependencies
+```flutter pub get```
 
-flutter drive --no-build --target=test_driver/app.dart
+## execute the app
+```flutter run```
 
-./execute.sh com.example.flutter_app test_driver/app.dart
+## execute the automated tests
+- ```cd test_driver```
+- ```dart app_test.dart```
 
+### References
+- [Flutter Gherkin](https://github.com/caarizam/flutter_gherkin.git)
