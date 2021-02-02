@@ -1,36 +1,46 @@
-import 'dart:async';
-import 'package:flutter_gherkin/flutter_gherkin.dart';
-import 'package:gherkin/gherkin.dart';
-import 'package:glob/glob.dart';
-import 'steps_definition/hooks/hooks.dart';
+import 'package:flutter_driver/flutter_driver.dart';
+import 'package:test/test.dart';
 
-/// [holis-cambio]
-import 'steps_definition/steps.dart';
+void main(){
+  group('AWS group test', () {
 
-Future<void> main() {
-  FlutterTestConfiguration config = FlutterTestConfiguration()
-    ..features = <Glob>[Glob('features//**.feature')]
-    ..reporters = <Reporter>[
-      ProgressReporter(),
-      TestRunSummaryReporter(),
-      JsonReporter(path: './reports/json/report.json'),
-      FlutterDriverReporter(
-        logErrorMessages: true,
-        logInfoMessages: true,
-        logWarningMessages: true,
-      ),
-    ]
-    ..hooks = <Hook>[
-      Hooks(),
-    ]
-    ..stepDefinitions = <StepDefinitionBase<World>>[
-      ...generalSteps,
-    ]
-    ..customStepParameterDefinitions = <CustomParameter<dynamic>>[]
-    ..restartAppBetweenScenarios = true
-    ..targetAppWorkingDirectory = '../'
-    ..targetAppPath = 'test_driver/app.dart'
-    ..exitAfterTestRun = true;
+    FlutterDriver driver;
 
-  return GherkinRunner().execute(config);
+    /*final emailFinder = find.byValueKey('email');
+    final passwordFinder = find.byValueKey('password');
+    final loginButtonFinder = find.byValueKey('login_button');*/
+
+    setUpAll(() async {
+      driver = await FlutterDriver.connect();
+    });
+
+    tearDownAll(() async {
+      if (driver != null) {
+        driver.close();
+      }
+    });
+
+    test('Enter the credentials', () async {
+
+      SerializableFinder emailFinder = find.byValueKey('email');
+      SerializableFinder passwordFinder = find.byValueKey('password');
+      SerializableFinder loginButtonFinder = find.byValueKey('login_button');
+
+      await Future.delayed(Duration(seconds: 10));
+      await driver.waitFor(emailFinder);
+      await driver.tap(emailFinder);
+      await driver.enterText('charlie@yopmail.com');
+
+      await Future.delayed(Duration(seconds: 2));
+      await driver.waitFor(passwordFinder);
+      await driver.tap(passwordFinder);
+      await driver.enterText('111222');
+
+      await Future.delayed(Duration(seconds: 2));
+      await driver.waitFor(loginButtonFinder);
+      await driver.tap(loginButtonFinder);
+
+    });
+
+  });
 }
