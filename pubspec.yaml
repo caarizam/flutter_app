@@ -23,7 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sylph: ^0.7.2
+  sylph:
+    git: https://github.com/caarizam/sylph.git
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -35,7 +36,7 @@ dev_dependencies:
     sdk: flutter
   flutter_driver:
     sdk: flutter
-  test: ^1.14.1
+  test: any
   http: ">=0.12.0+4 <0.12.1"
 
 # For information on the generic Dart part of this file, see the
