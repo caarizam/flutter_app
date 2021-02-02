@@ -56,7 +56,7 @@ class LoginView extends StatelessWidget {
                 color: Colors.black,
                 textColor: Colors.white,
                 onPressed: (){
-                  //Navigator.pushNamed(context, '/register');
+                  Navigator.pushNamed(context, '/register');
                   
                 },
               ),
