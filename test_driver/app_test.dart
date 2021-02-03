@@ -25,7 +25,7 @@ Future<void> main() {
     ]
     ..stepDefinitions = <StepDefinitionBase<World>>[
       ...generalSteps,
-      ...registerSteps,
+      //...registerSteps,
     ]
     ..customStepParameterDefinitions = <CustomParameter<dynamic>>[]
     ..restartAppBetweenScenarios = true
