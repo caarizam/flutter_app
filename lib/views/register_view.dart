@@ -6,6 +6,7 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: Key('register_screen'),
       backgroundColor: Color(0xfff5f5dc),
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -33,6 +34,7 @@ class RegisterView extends StatelessWidget {
             height: 4,
           ),
           TextField(
+            key: Key('username'),
             controller: TextEditingController(),
             textInputAction: TextInputAction.done,
             maxLength: 60,
@@ -47,6 +49,7 @@ class RegisterView extends StatelessWidget {
             height: 4,
           ),
           TextField(
+            key: Key('password'),
             controller: TextEditingController(),
             textInputAction: TextInputAction.done,
             maxLength: 60,
@@ -61,6 +64,7 @@ class RegisterView extends StatelessWidget {
             height: 4,
           ),
           TextField(
+            key: Key('confirm'),
             controller: TextEditingController(),
             textInputAction: TextInputAction.done,
             maxLength: 60,

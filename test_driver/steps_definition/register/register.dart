@@ -7,5 +7,5 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 part 'register_form_steps.dart';
 
 List<StepDefinitionBase<World>> registerSteps = <StepDefinitionBase<World>>[
-
+  FillRegisterFormSteps(),
 ];

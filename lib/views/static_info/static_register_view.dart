@@ -51,6 +51,7 @@ class StaticRegisterView extends StatelessWidget{
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
               child: RaisedButton(
+                key: Key('accept_register'),
                 padding: EdgeInsets.symmetric(
                   horizontal: 16,
                   vertical: 12,
