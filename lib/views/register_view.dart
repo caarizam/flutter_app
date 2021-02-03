@@ -33,7 +33,6 @@ class RegisterView extends StatelessWidget {
             height: 4,
           ),
           TextField(
-            key: Key('username'),
             controller: TextEditingController(),
             textInputAction: TextInputAction.done,
             maxLength: 60,
@@ -48,7 +47,6 @@ class RegisterView extends StatelessWidget {
             height: 4,
           ),
           TextField(
-            key: Key('password'),
             controller: TextEditingController(),
             textInputAction: TextInputAction.done,
             maxLength: 60,
@@ -63,7 +61,6 @@ class RegisterView extends StatelessWidget {
             height: 4,
           ),
           TextField(
-            key: Key('confirm_pass'),
             controller: TextEditingController(),
             textInputAction: TextInputAction.done,
             maxLength: 60,

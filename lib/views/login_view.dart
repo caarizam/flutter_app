@@ -52,6 +52,7 @@ class LoginView extends StatelessWidget {
                 },
               ),
               RaisedButton(
+                key: Key('register_btn'),
                 child: Text("Register", style: TextStyle(fontSize: 20),),
                 color: Colors.black,
                 textColor: Colors.white,
