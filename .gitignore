@@ -24,4 +24,4 @@ doc/api/
 *.iml
 .flutter-plugins
 .flutter-plugins-dependencies
-reports/json/report.json
+test_driver/reports/json/report.json
