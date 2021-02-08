@@ -31,7 +31,7 @@ class FillRegisterFormSteps extends And1WithWorld<Table, FlutterWorld> {
 
     SerializableFinder confirmationLabelFinder = find.byValueKey('accept_register');
 
-    expect(await FlutterDriverUtils.isPresent(world.driver, confirmationLabelFinder), false, reason: 'Button not found');
+    expect(await FlutterDriverUtils.isPresent(world.driver, confirmationLabelFinder), true, reason: 'Button not found');
 
 
   }

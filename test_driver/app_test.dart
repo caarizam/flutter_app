@@ -9,11 +9,11 @@ import 'steps_definition/steps.dart';
 
 Future<void> main() {
   FlutterTestConfiguration config = FlutterTestConfiguration()
-    ..features = <Glob>[Glob('features//**.feature')]
+    ..features = <Glob>[Glob('test_driver/features/**.feature')]
     ..reporters = <Reporter>[
       ProgressReporter(),
       TestRunSummaryReporter(),
-      JsonReporter(path: './reports/json/report.json'),
+      JsonReporter(path: 'test_driver/reports/json/report.json'),
       FlutterDriverReporter(
         logErrorMessages: true,
         logInfoMessages: true,
@@ -29,7 +29,7 @@ Future<void> main() {
     ]
     ..customStepParameterDefinitions = <CustomParameter<dynamic>>[]
     ..restartAppBetweenScenarios = true
-    ..targetAppWorkingDirectory = '../'
+    ..targetAppWorkingDirectory = '.'
     ..targetAppPath = 'test_driver/app.dart'
     ..exitAfterTestRun = true;
 

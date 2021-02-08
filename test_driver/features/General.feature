@@ -10,6 +10,6 @@ Feature: Initial test
     Examples: Data to test
       | username          | password  | confirm   |
       | qa_12@yopmail.com | 123456    | 123456    |
-      | qa_13@yopmail.com | 858585    | 858585    |
-      | qa_14@yopmail.com | dd11      | dd11      |
-      | qa_15@yopmail.com | 12345ddd6 | 12345ddd6 |
+      #| qa_13@yopmail.com | 858585    | 858585    |
+      #| qa_14@yopmail.com | dd11      | dd11      |
+      #| qa_15@yopmail.com | 12345ddd6 | 12345ddd6 |
