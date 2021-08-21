@@ -3,8 +3,6 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:glob/glob.dart';
 import 'steps_definition/hooks/hooks.dart';
-
-/// [holis-cambio]
 import 'steps_definition/steps.dart';
 
 Future<void> main() {
