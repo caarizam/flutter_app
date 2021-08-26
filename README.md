@@ -7,8 +7,10 @@
 ```flutter run```
 
 ## execute the automated tests
-- ```cd test_driver```
-- ```dart app_test.dart```
+- ```flutter drive --target=test_driver/app.dart```
 
 ### References
 - [Flutter Gherkin](https://github.com/caarizam/flutter_gherkin.git)
+- [Flutter Testing](https://flutter.dev/docs/testing)
+- [Integration Test](https://flutter.dev/docs/testing/integration-tests)
+- [App Circle CI/CD](https://appcircle.io/blog/guide-to-automated-mobile-ci-cd-for-flutter-projects-with-appcircle/#testing-the-flutter-app)
