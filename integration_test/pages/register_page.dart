@@ -4,7 +4,6 @@ import 'base_page.dart';
 
 class RegisterPage extends BasePage {
 
-  Key registerButton = Key('register_btn');
   Key usernameTxt = Key('username');
   Key passwordTxt = Key('password');
   Key confirmPassTxt = Key('confirm');

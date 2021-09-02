@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
+import 'pages/login_page.dart';
 import 'pages/register_page.dart';
 import 'package:flutter_app/main.dart' as app;
 
@@ -14,15 +16,16 @@ void main() {
 
 void registerTest(String email, String pass, String confirmPass){
   var registerPage = RegisterPage();
+  var loginPage = LoginPage();
 
   group('Register functionality', () {
 
-    testWidgets('Checking register form', (WidgetTester tester) async {
+    testWidgets('Testing register form', (WidgetTester tester) async {
 
       app.main();
       await tester.pumpAndSettle();
 
-      final Finder registerButtonFinder = find.byKey(registerPage.registerButton);
+      final Finder registerButtonFinder = find.byKey(ValueKey(loginPage.registerButton));
       await tester.tap(registerButtonFinder);
       await tester.pumpAndSettle();
 
@@ -46,6 +49,7 @@ void registerTest(String email, String pass, String confirmPass){
       await tester.pumpAndSettle();
 
       final Finder acceptButtonFinder = find.byKey(registerPage.acceptRegisterButton);
+      await tester.ensureVisible(acceptButtonFinder);
       await tester.tap(acceptButtonFinder);
       await tester.pumpAndSettle();
 

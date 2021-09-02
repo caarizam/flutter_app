@@ -41,7 +41,7 @@ class WelcomeView extends StatelessWidget {
               ),
               elevation: 0,
               child: Text(
-                "Show SnackBar",
+                "You are logged in!!!",
                 style: TextStyle(fontSize: 25),
               ),
               color: Colors.black,
