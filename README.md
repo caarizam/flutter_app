@@ -7,8 +7,7 @@
 ```flutter run```
 
 ## execute the automated tests
-- ```cd test_driver```
-- ```dart app_test.dart```
+- ```dart test_driver/app_test.dart```
 
 ### References
 - [Flutter Gherkin](https://github.com/caarizam/flutter_gherkin.git)
