@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/welcome_view.dart';
 
 class LoginView extends StatelessWidget {
   final _passFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
 
   void _loginAction() {
-    //_form.currentState.save();
+    _form.currentState.save();
 
   }
 
@@ -29,33 +30,44 @@ class LoginView extends StatelessWidget {
                 key: Key('email'),
                 decoration: InputDecoration(labelText: 'email'),
                 textInputAction: TextInputAction.next,
-                maxLength: 60,
+                maxLength: 15,
                 onFieldSubmitted: (_) {
                   FocusScope.of(context).requestFocus(_passFocusNode);
                 },
+                validator: (value) => value.isEmpty ? 'Enter a value' : null,
               ),
               TextFormField(
                 key: Key('password'),
                 decoration: InputDecoration(labelText: 'password'),
                 textInputAction: TextInputAction.next,
                 obscureText: true,
-                maxLength: 20,
+                maxLength: 8,
                 focusNode: _passFocusNode,
               ),
-              RaisedButton(
+              ElevatedButton(
                 key: Key('login_button'),
                 child: Text("Login", style: TextStyle(fontSize: 20),),
-                color: Colors.black,
-                textColor: Colors.white,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                ),
+                //color: Colors.black,
+                //textColor: Colors.white,
                 onPressed: (){
-                  //Navigator.pushNamed(context, '/register');
+                  Navigator.pushNamed(
+                      context,
+                      WelcomeView.routeName,
+                  );
                 },
               ),
-              RaisedButton(
+              ElevatedButton(
                 key: Key('register_btn'),
                 child: Text("Register", style: TextStyle(fontSize: 20),),
-                color: Colors.black,
-                textColor: Colors.white,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+
+                ),
+                //color: Colors.black,
+                //textColor: Colors.white,
                 onPressed: (){
                   Navigator.pushNamed(context, '/register');
                   
