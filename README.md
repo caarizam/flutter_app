@@ -1,8 +1,18 @@
-# flutter_app
+# Basic flutter app
 
-flutter drive --target=test_driver/app.dart
+## install dependencies
+```flutter pub get```
 
-flutter drive --no-build --target=test_driver/app.dart
+## execute the app
+```flutter run```
 
-./execute.sh com.example.flutter_app test_driver/app.dart
-
+## execute the automated tests
+- ```flutter drive --target=test_driver/app.dart```
+- flutter drive \
+    --driver=test_driver/integration_test.dart \
+    --target=integration_test/register_test.dart
+### References
+- [Flutter Gherkin](https://github.com/caarizam/flutter_gherkin.git)
+- [Flutter Testing](https://flutter.dev/docs/testing)
+- [Integration Test](https://flutter.dev/docs/testing/integration-tests)
+- [App Circle CI/CD](https://appcircle.io/blog/guide-to-automated-mobile-ci-cd-for-flutter-projects-with-appcircle/#testing-the-flutter-app)

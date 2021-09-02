@@ -3,9 +3,18 @@ import 'package:flutter/material.dart';
 class RegisterView extends StatelessWidget {
   static String routeName = '/register';
 
+  final usernameController = TextEditingController();
+  final passController = TextEditingController();
+  final confirmController = TextEditingController();
+
+  String validatePassword(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: Key('register_screen'),
       backgroundColor: Color(0xfff5f5dc),
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -34,9 +43,9 @@ class RegisterView extends StatelessWidget {
           ),
           TextField(
             key: Key('username'),
-            controller: TextEditingController(),
+            controller: usernameController,
             textInputAction: TextInputAction.done,
-            maxLength: 60,
+            maxLength: 15,
             obscureText: false,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -49,9 +58,9 @@ class RegisterView extends StatelessWidget {
           ),
           TextField(
             key: Key('password'),
-            controller: TextEditingController(),
+            controller: passController,
             textInputAction: TextInputAction.done,
-            maxLength: 60,
+            maxLength: 8,
             obscureText: true,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -62,11 +71,11 @@ class RegisterView extends StatelessWidget {
             width: 4,
             height: 4,
           ),
-          TextField(
-            key: Key('confirm_pass'),
-            controller: TextEditingController(),
+          TextFormField(
+            key: Key('confirm'),
+            controller: confirmController,
             textInputAction: TextInputAction.done,
-            maxLength: 60,
+            maxLength: 8,
             obscureText: true,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -77,26 +86,67 @@ class RegisterView extends StatelessWidget {
             //width: double.infinity,
             //margin: EdgeInsets.all(8),
             minWidth: MediaQuery.of(context).size.width,
-            child: RaisedButton(
+            child: ElevatedButton(
               key: Key('register_action'),
-              padding: EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black,
+
               ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-                side: BorderSide(color: Colors.transparent),
-              ),
-              elevation: 0,
+              //padding: EdgeInsets.symmetric(
+                //horizontal: 16,
+                //vertical: 12,
+              //),
+              //shape: RoundedRectangleBorder(
+                //borderRadius: BorderRadius.circular(6),
+                //side: BorderSide(color: Colors.transparent),
+              //),
+              //elevation: 0,
               child: Text(
                 'Send',
                 style: TextStyle(fontSize: 18),
               ),
-              color: Colors.black,
-              textColor: Colors.white,
+              //color: Colors.black,
+              //textColor: Colors.white,
               onPressed: () {
                 //Navigator.pop(context);
-                Navigator.pushNamed(context, '/static-register');
+                if(usernameController.text.isEmpty || passController.text.isEmpty || confirmController.text.isEmpty){
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        // Retrieve the text the that user has entered by using the
+                        // TextEditingController.
+                        content: Text('The fields can\'t be empty.'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }else if(passController.text != confirmController.text){
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        // Retrieve the text the that user has entered by using the
+                        // TextEditingController.
+                        content: Text('The password and the confirm password should be the same.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }else{
+                  Navigator.pushNamed(context, '/static-register');
+                }
+
               },
             ),
           ),
