@@ -1,5 +1,5 @@
 name: flutter_app
-description: A new Flutter project.
+description: Flutter demo to show integration test
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^0.1.3
+  cupertino_icons: ^1.0.3
 
 dev_dependencies:
   integration_test:
@@ -22,7 +22,7 @@ dev_dependencies:
   test: any
   flutter_driver:
     sdk: flutter
-  http: ">=0.12.0+4 <0.12.1"
+  http: ^0.13.3
 
 # The following section is specific to Flutter.
 flutter:
