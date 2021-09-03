@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/views/welcome_view.dart';
+import 'file:///D:/dev/mobile/demo_overactive/flutter_app/lib/views/static_info/welcome_view.dart';
 
 class LoginView extends StatelessWidget {
   final _passFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
+
+  final usernameController = TextEditingController();
+  final passController = TextEditingController();
 
   void _loginAction() {
     _form.currentState.save();
@@ -28,6 +31,7 @@ class LoginView extends StatelessWidget {
             children: <Widget>[
               TextFormField(
                 key: Key('email'),
+                controller: usernameController,
                 decoration: InputDecoration(labelText: 'email'),
                 textInputAction: TextInputAction.next,
                 maxLength: 15,
@@ -38,6 +42,7 @@ class LoginView extends StatelessWidget {
               ),
               TextFormField(
                 key: Key('password'),
+                controller: passController,
                 decoration: InputDecoration(labelText: 'password'),
                 textInputAction: TextInputAction.next,
                 obscureText: true,
@@ -53,10 +58,27 @@ class LoginView extends StatelessWidget {
                 //color: Colors.black,
                 //textColor: Colors.white,
                 onPressed: (){
-                  Navigator.pushNamed(
+                  if(usernameController.text.isEmpty || passController.text.isEmpty){
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          content: Text('Please, enter the email and the password.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }else{
+                    Navigator.pushNamed(
                       context,
                       WelcomeView.routeName,
-                  );
+                    );
+                  }
                 },
               ),
               ElevatedButton(
@@ -64,13 +86,9 @@ class LoginView extends StatelessWidget {
                 child: Text("Register", style: TextStyle(fontSize: 20),),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black,
-
                 ),
-                //color: Colors.black,
-                //textColor: Colors.white,
                 onPressed: (){
                   Navigator.pushNamed(context, '/register');
-                  
                 },
               ),
             ],

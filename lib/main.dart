@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/views/answer_view.dart';
-import 'package:flutter_app/views/question_view.dart';
 import 'package:flutter_app/views/register_view.dart';
 import 'package:flutter_app/views/login_view.dart';
 import 'package:flutter_app/views/static_info/static_register_view.dart';
-import 'package:flutter_app/views/welcome_view.dart';
+import 'file:///D:/dev/mobile/demo_overactive/flutter_app/lib/views/static_info/welcome_view.dart';
 import 'package:flutter_driver/driver_extension.dart';
 
 Future<void> main() async{
@@ -23,15 +21,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  var _clicks = 0;
-
-  void _clicksIncrement(){
-    setState(() {
-      _clicks++;
-    });
-    print(_clicks);
-  }
 
   @override
   Widget build(BuildContext context) {
