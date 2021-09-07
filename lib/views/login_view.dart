@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///D:/dev/mobile/demo_overactive/flutter_app/lib/views/static_info/welcome_view.dart';
+import 'package:flutter_app/views/static_info/welcome_view.dart';
 
 class LoginView extends StatelessWidget {
   final _passFocusNode = FocusNode();
