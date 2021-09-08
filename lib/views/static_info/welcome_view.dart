@@ -19,7 +19,7 @@ class WelcomeView extends StatelessWidget {
             height: 4,
           ),
           Text(
-            'Welcome user',
+            'Welcome ',
             style: TextStyle(
                 fontSize: 33, fontWeight: FontWeight.bold, color: Colors.teal),
             textAlign: TextAlign.center,
@@ -41,7 +41,7 @@ class WelcomeView extends StatelessWidget {
               ),
               elevation: 0,
               child: Text(
-                "Show SnackBar",
+                "You are logged in!!!",
                 style: TextStyle(fontSize: 25),
               ),
               color: Colors.black,

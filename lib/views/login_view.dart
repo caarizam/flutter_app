@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/static_info/welcome_view.dart';
 
 class LoginView extends StatelessWidget {
   final _passFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
 
+  final usernameController = TextEditingController();
+  final passController = TextEditingController();
+
   void _loginAction() {
-    //_form.currentState.save();
+    _form.currentState.save();
 
   }
 
@@ -27,38 +31,64 @@ class LoginView extends StatelessWidget {
             children: <Widget>[
               TextFormField(
                 key: Key('email'),
+                controller: usernameController,
                 decoration: InputDecoration(labelText: 'email'),
                 textInputAction: TextInputAction.next,
-                maxLength: 60,
+                maxLength: 15,
                 onFieldSubmitted: (_) {
                   FocusScope.of(context).requestFocus(_passFocusNode);
                 },
+                validator: (value) => value.isEmpty ? 'Enter a value' : null,
               ),
               TextFormField(
                 key: Key('password'),
+                controller: passController,
                 decoration: InputDecoration(labelText: 'password'),
                 textInputAction: TextInputAction.next,
                 obscureText: true,
-                maxLength: 20,
+                maxLength: 8,
                 focusNode: _passFocusNode,
               ),
-              RaisedButton(
+              ElevatedButton(
                 key: Key('login_button'),
                 child: Text("Login", style: TextStyle(fontSize: 20),),
-                color: Colors.black,
-                textColor: Colors.white,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                ),
+                //color: Colors.black,
+                //textColor: Colors.white,
                 onPressed: (){
-                  //Navigator.pushNamed(context, '/register');
+                  if(usernameController.text.isEmpty || passController.text.isEmpty){
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          content: Text('Please, enter the email and the password.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }else{
+                    Navigator.pushNamed(
+                      context,
+                      WelcomeView.routeName,
+                    );
+                  }
                 },
               ),
-              RaisedButton(
+              ElevatedButton(
                 key: Key('register_btn'),
                 child: Text("Register", style: TextStyle(fontSize: 20),),
-                color: Colors.black,
-                textColor: Colors.white,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                ),
                 onPressed: (){
                   Navigator.pushNamed(context, '/register');
-                  
                 },
               ),
             ],
