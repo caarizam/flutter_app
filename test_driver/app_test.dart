@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
-import 'package:glob/glob.dart';
 import 'steps_definition/hooks/hooks.dart';
 import 'steps_definition/steps.dart';
 
 Future<void> main() {
   FlutterTestConfiguration config = FlutterTestConfiguration()
-    ..features = <Glob>[Glob('test_driver/features/**.feature')]
+    ..features = [RegExp('test_driver/features/*.feature')]
     ..reporters = <Reporter>[
       ProgressReporter(),
       TestRunSummaryReporter(),
@@ -29,7 +28,7 @@ Future<void> main() {
     ..restartAppBetweenScenarios = true
     ..targetAppWorkingDirectory = '.'
     ..targetAppPath = 'test_driver/app.dart'
-    ..exitAfterTestRun = true;
+    ..stopAfterTestFailed = true;
 
   return GherkinRunner().execute(config);
 }

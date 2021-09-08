@@ -1,13 +1,13 @@
 part of aut.test.register;
 
-class FillRegisterFormSteps extends And1WithWorld<Table, FlutterWorld> {
+class FillRegisterFormSteps extends And1WithWorld<GherkinTable, FlutterWorld> {
   FillRegisterFormSteps()
       : super(
     StepDefinitionConfiguration()..timeout = Duration(seconds: 10),
   );
 
   @override
-  Future<void> executeStep(Table dataTable) async {
+  Future<void> executeStep(GherkinTable dataTable) async {
 
     print('click on register');
     final columns = dataTable.asMap();

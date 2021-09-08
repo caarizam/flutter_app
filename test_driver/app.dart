@@ -1,7 +1,12 @@
-import 'package:flutter_app/main.dart' as app;
+import 'package:flutter_app/main.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_driver/driver_extension.dart';
 
-Future<void> main() async {
+void main() {
+  // This line enables the extension
   enableFlutterDriverExtension();
-  await app.main();
+
+  // Call the `main()` function of your app or call `runApp` with any widget you
+  // are interested in testing.
+  runApp(MyApp());
 }
