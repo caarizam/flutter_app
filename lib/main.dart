@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/views/register_view.dart';
 import 'package:flutter_app/views/login_view.dart';
 import 'package:flutter_app/views/static_info/static_register_view.dart';
-import 'package:flutter_app/views/welcome_view.dart';
+import 'package:flutter_app/views/static_info/welcome_view.dart';
+import 'package:flutter_driver/driver_extension.dart';
 
 Future<void> main() async{
+  //enableFlutterDriverExtension();
   runApp(
     MyApp(),
   );
