@@ -6,7 +6,9 @@ import 'steps_definition/steps.dart';
 
 Future<void> main() {
   FlutterTestConfiguration config = FlutterTestConfiguration()
-    ..features = [RegExp('test_driver/features/*.feature')]
+    ..features = [
+      RegExp(r'/*.*.feature'),
+    ]
     ..reporters = <Reporter>[
       ProgressReporter(),
       TestRunSummaryReporter(),
